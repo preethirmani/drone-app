@@ -1,0 +1,35 @@
+<p>drone-home works!</p>
+<div class="container">
+  <table>
+   <thead>
+     <tr>
+      <th>Id</th>
+      <th>Time</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Altidue</th>
+      <th>DroneSpeed</th>
+      <th>Battery(%)</th>
+      <th>ImageDetected</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr *ngFor = "let droneData of droneList">
+      <td>{{droneData.image_id}}</td>
+      <td>{{droneData.timestamp}}</td>
+      <td>{{droneData.latitude}}</td>
+      <td>{{droneData.longitude}}</td>
+      <td>{{droneData.altitude_m}}</td>
+      <td> 
+       
+        
+      </td>
+     
+      <td>{{droneData.battery_level_pct}}</td>
+      <td>{{droneData.subject_detection}}</td>
+    
+    </tr>
+      
+    </tbody>
+  </table>
+</div>
