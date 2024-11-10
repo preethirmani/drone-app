@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { IDrone } from './idrone';
 import { HttpClient } from '@angular/common/http';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom,Observable } from 'rxjs';
+import { IQueryResponse } from './iquery-response';
 
 
 @Injectable({
@@ -27,14 +28,12 @@ export class DroneService {
     console.log('query::', query);
     try{
       const data = await firstValueFrom(
-        this.httpclient.post<{
-          status: string, message: string, data:any
-        }>(
+        this.httpclient.post<IQueryResponse>(
           `http://localhost:3100/api/drone/mockQuery/`,
           {query}
         )
       );
-      console.log(data);
+      console.log('data::',data);
       return data;
 
     }catch (error) {

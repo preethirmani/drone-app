@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import { DroneService } from '../drone.service';
 import { IDrone } from '../idrone';
 import { CommonModule } from '@angular/common';
+import { IQueryResponse } from '../iquery-response';
 @Component({
   selector: 'app-drone-home',
   standalone: true,
@@ -14,6 +15,7 @@ export class DroneHomeComponent {
   
   droneList : IDrone[] = [];
   query : string = '';
+  response : '' = ;
 
   constructor(private droneService : DroneService ) {
   }
@@ -22,11 +24,13 @@ export class DroneHomeComponent {
     this.droneList = await this.droneService.getAllDroneData();
   }
 
-  OnSubmitQuery() {
+  async OnSubmitQuery() {
     console.log('ButtonClicked!!!')
     console.log(this.query);
-    this.droneService.getUserQuery(this.query);
-    
+    const result = await this.droneService.getUserQuery(this.query);
+    console.log('Result in component',result);
+    this.response = result.data || 'Drone Data not available';
+    console.log(this.response);
   }
 
 }
