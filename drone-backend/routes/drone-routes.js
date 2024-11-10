@@ -56,6 +56,7 @@ router.post('/query', async (req, res) => {
 
 router.post('/drone/mockQuery', (req, res) => {
   const userQuery = req.body.query;
+  console.log('UserQuery::', userQuery);
  
   const query = userQuery.split(' ');
  

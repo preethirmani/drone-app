@@ -1,5 +1,9 @@
 <p>drone-home works!</p>
 <div class="container">
+  <div>
+    <input type="text" [(ngModel)]= "query" placeholder="Enter Your Query" />
+    <button (click)="OnSubmitQuery()">Submit</button>
+  </div>
   <table>
    <thead>
      <tr>
@@ -20,11 +24,7 @@
       <td>{{droneData.latitude}}</td>
       <td>{{droneData.longitude}}</td>
       <td>{{droneData.altitude_m}}</td>
-      <td> 
-       
-        
-      </td>
-     
+      <td>{{droneData.drone_speed_mps}}</td>    
       <td>{{droneData.battery_level_pct}}</td>
       <td>{{droneData.subject_detection}}</td>
     
