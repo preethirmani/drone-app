@@ -1,23 +1,32 @@
-<p>drone-home works!</p>
+<h2>Drone Query</h2>
 <div class="container">
+  <form (ngSubmit)="OnSubmitQuery()">
+    <input type="text" [formControl]= "query" placeholder="Enter Your Query" class="query-input" required=""/>
+
+    <button type="submit" class="submit-button"
+    [disabled]="isLoading || !query.value">
+     <span *ngIf="isLoading">Submitting...</span>
+    <span *ngIf="!isLoading">Submit Query</span>
+    </button>
+    <div *ngIf="response" class="response">
+       <p *ngIf="response">Response: {{response}}</p>
+    </div>
+   
+  </form>
   <div>
-    <input type="text" [(ngModel)]= "query" placeholder="Enter Your Query" />
-    <button (click)="OnSubmitQuery()">Submit</button>
-    <p></p>
-  </div>
-  <table>
-   <thead>
-     <tr>
-      <th>Id</th>
-      <th>Time</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Altidue</th>
-      <th>DroneSpeed</th>
-      <th>Battery(%)</th>
-      <th>ImageDetected</th>
-    </tr>
-   </thead>
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Time</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Altidue</th>
+            <th>DroneSpeed</th>
+            <th>Battery(%)</th>
+            <th>ImageDetected</th>
+          </tr>
+        </thead>
    <tbody>
     <tr *ngFor = "let droneData of droneList">
       <td>{{droneData.image_id}}</td>
@@ -33,4 +42,7 @@
       
     </tbody>
   </table>
+
+  </div>
+  
 </div>

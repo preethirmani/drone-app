@@ -120,7 +120,7 @@ router.post('/drone/mockQuery', (req, res) => {
       data : data.default[1].aperture
     })
   } else {
-    res.json({'Response':'Query not recogonized'});
+    res.json({'data':'Query not recogonized'});
   }
 
 })
