@@ -2,9 +2,12 @@ const express = require('express');
 const router = express.Router();
 const {OpenAI} = require('openai');
 const data = require('../drone-Data');
+require ('dotenv').config()
+
+console.log('APIKEY', process.env.API_KEY)
 
 const openai = new OpenAI({
-  apiKey : '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'
+  apiKey : process.env.API_KEY
 })
 
 
